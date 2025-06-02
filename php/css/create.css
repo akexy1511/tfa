@@ -1,0 +1,41 @@
+body {
+    background: #f7f7f7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.card {
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+label.form-label { font-weight: bold; }
+.form-control, .form-select {
+    border-radius: 12px;
+    padding: 12px;
+}
+.form-check-label {
+    font-weight: 500;
+}
+.btn-primary {
+    padding: 12px 40px;
+    font-size: 18px;
+    border-radius: 30px;
+}
+.fw-bold { font-weight: bold; }
+.card h2 img {
+    vertical-align: middle;
+}
+ul {
+    margin-bottom: 0;
+}
+ul.list-group { margin-bottom: 0; }
+ul.list-group li { border: none; background: #f8f9fa; }
+input[type="number"]:read-only, input[readonly] {
+    background: #f3f3f3;
+    font-weight: bold;
+}
+.text-end {
+    text-align: right;
+}
