@@ -1,0 +1,53 @@
+<?php
+$host = 'localhost';
+$dbname = 'tfa_2025';
+$username = 'root';
+$password = '';
+
+$pdo = "";
+
+// Connexion à la base de données
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur de connexion : " . $e->getMessage());
+}
+// Fonction pour récupérer les personnages
+function getPersonnages($pdo) {
+    $stmt = $pdo->query("SELECT * FROM personnages");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+// Fonction pour récupérer les classes
+function getClasses($pdo) {
+    $stmt = $pdo->query("SELECT * FROM classes");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+//
+
+function get_personnages() {
+
+    global $pdo;
+
+    try {
+        // Requête pour récupérer toutes les infos nécessaires
+        $sql = "SELECT 
+                    p.id_personnage, p.nom, p.jouable, p.niveau, 
+                    r.nom AS race, 
+                    c.nom AS classe, 
+                    a.nom AS alignement
+                FROM personnage p
+                JOIN race r ON p.id_race = r.id_race
+                JOIN classe c ON p.id_classe = c.id_classe
+                JOIN alignement a ON p.id_alignement = a.id_alignement";
+
+        $stmt = $pdo->query($sql);
+        $personnages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $personnages;
+
+    } catch (PDOException $e) {
+        echo "<div class='alert alert-danger'>Erreur : " . htmlspecialchars($e->getMessage()) . "</div>";
+        return [];
+    }    
+}
+?>
