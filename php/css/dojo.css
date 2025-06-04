@@ -1,0 +1,93 @@
+.titre-dojo {
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    font-size: 2.3rem;
+    margin-bottom: 1.5rem;
+}
+.titre-dojo span {
+    text-decoration: underline;
+}
+.fiche-card {
+    background: #222;
+    color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+}
+.fiche-card strong { color: #fff; }
+/* Remplacement de "sorts" par "attaques" */
+.attaques-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.attaques-list li {
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    margin-bottom: 0.3em;
+}
+.attaques-list .icon {
+    color: #f7c948;
+    margin-right: 0.5em;
+    font-size: 1.2em;
+}
+.table-attaque {
+    border-radius: 8px;
+    overflow: hidden;
+}
+.table-attaque thead tr {
+    background: #0062ff;
+    color: #fff;
+}
+.table-attaque tbody tr.table-secondary {
+    background: #f2f2f2;
+    color: #888;
+}
+.btn-apprendre {
+    background: #198754;
+    color: #fff;
+    border: none;
+    padding: 0.35em 1.2em;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn-apprendre:disabled,
+.btn-apprendre[disabled] {
+    background: #aaa;
+    color: #fff;
+}
+.badge-connu {
+    background: #198754;
+    color: #fff;
+    font-size: 0.95em;
+    padding: 0.4em 0.8em;
+    border-radius: 5px;
+}
+.badge-warning {
+    background: #ffc107;
+    color: #222;
+    font-size: 0.95em;
+    padding: 0.4em 0.8em;
+    border-radius: 5px;
+}
+.badge-danger {
+    background: #dc3545;
+    color: #fff;
+    font-size: 0.95em;
+    padding: 0.4em 0.8em;
+    border-radius: 5px;
+}
+.bandeau-sort {
+    font-weight: bold;
+    background: #0062ff;
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+    padding: 0.7em 1em;
+    margin-bottom: 0;
+    font-size: 1.15rem;
+}
+@media (max-width: 900px) {
+    .fiche-card { padding: 1rem; }
+}
