@@ -292,6 +292,31 @@ CREATE TABLE `connait` (
 );
 
 --
+-- Structure de la table `technique`
+--
+
+CREATE TABLE `technique` (
+  `id_technique` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `niveau_min` int(11) NOT NULL,
+  `prix` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_technique`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Structure de la table `connait_technique`
+--
+
+CREATE TABLE `connait_technique` (
+  `id_personnage` int(11) NOT NULL,
+  `id_technique` int(11) NOT NULL,
+  PRIMARY KEY (`id_personnage`, `id_technique`),
+  FOREIGN KEY (`id_personnage`) REFERENCES `personnage`(`id_personnage`) ON DELETE CASCADE,
+  FOREIGN KEY (`id_technique`) REFERENCES `technique`(`id_technique`) ON DELETE CASCADE
+);
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -490,6 +515,31 @@ INSERT INTO `sort` (`nom`, `niveau_min`, `prix`, `description`) VALUES
 ('Lévitation', 2, 10, 'Permet de flotter à 6 m du sol'),
 ('Terreur', 3, 15, 'Provoque la fuite des ennemis faibles d’esprit'),
 ('Barrière magique', 4, 18, 'Réduit de moitié les dégâts magiques reçus');
+
+--
+-- Ajout des techniques du dojo
+--
+INSERT INTO `technique` (`nom`, `niveau_min`, `prix`, `description`) VALUES
+('Poing de tonnerre', 1, 5, 'Coup puissant infligeant +2 dégâts'),
+('Esquive éclair', 1, 8, 'Permet d\'attaquer immédiatement après une parade'),
+('Coup du dragon', 1, 6, 'Peut étourdir l\'ennemi pendant 1 tour'),
+('Parade du tigre', 2, 10, 'Ignore l\'armure sur un jet critique'),
+('Frappe tourbillon', 2, 12, 'Frappe tous les ennemis autour'),
+('Attaque du cobra', 1, 9, 'Bonus de +2 au jet d\'attaque'),
+('Coup du phénix', 2, 11, 'Fait tomber l\'ennemi au sol sur un succès'),
+('Mille poings', 3, 15, 'Double les dégâts avec une arme lourde'),
+('Fureur du guerrier', 3, 18, 'Permet deux attaques consécutives'),
+('Jet de kunai', 1, 5, 'Attaque à distance avec une arme légère'),
+('Pas de l\'ombre', 2, 10, 'Ignore bonus de DEX à la CA'),
+('Riposte du maître', 2, 12, 'Riposte automatique sur échec de l\'adversaire'),
+('Coup du genou', 1, 4, 'Frappe à courte portée, désoriente'),
+('Frappe du lion', 3, 20, 'Dégâts x1,5 si PV < 50 %'),
+('Garde parfaite', 2, 14, 'Annule les dégâts une fois par combat'),
+('Charge du sanglier', 3, 16, 'Dégâts + jet de Force pour repousser'),
+('Technique circulaire', 4, 22, 'Frappe tous les ennemis dans un cône de 3 cases'),
+('Frappe critique renforcée', 4, 25, 'Critique sur 19-20 au lieu de 20'),
+('Art du silence', 2, 13, 'Ne déclenche pas d\'alerte lors d\'un combat furtif'),
+('Désarmer', 3, 15, 'Force l\'ennemi à lâcher son arme sur réussite');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
