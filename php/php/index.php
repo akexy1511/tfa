@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="css/index.css">
-    <?php include 'include/link.php'; ?>
+    <?php include 'link.php'; ?>
 </head>
 <body>
-    <?php include 'include/navbar.php'; ?>
+    <?php include '../include/navbar.php'; ?>
     <?php
-    include 'db.php';
+    include '../db.php';
     // Exemples de stats
     $total_pj = $pdo->query("SELECT COUNT(*) FROM personnage WHERE jouable='1'")->fetchColumn();
     $total_pnj = $pdo->query("SELECT COUNT(*) FROM personnage WHERE jouable='0'")->fetchColumn();
