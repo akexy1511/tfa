@@ -4,7 +4,7 @@ $dbname = 'tfa_2025';
 $username = 'root';
 $password = '';
 
-$pdo = "";
+$pdo = null;
 
 // Connexion à la base de données
 try {
@@ -13,20 +13,20 @@ try {
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
 }
+
 // Fonction pour récupérer les personnages
 function getPersonnages($pdo) {
     $stmt = $pdo->query("SELECT * FROM personnages");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 // Fonction pour récupérer les classes
 function getClasses($pdo) {
     $stmt = $pdo->query("SELECT * FROM classes");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-//
 
 function get_personnages() {
-
     global $pdo;
 
     try {

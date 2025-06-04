@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="css/index.css">
-    <?php include '../include/link.php'; ?>
+    <?php include 'include/link.php'; ?>
 </head>
 <body>
-    <?php include '../include/navbar.php'; ?>
-    <?php
-    include '../db.php';
+    <?php 
+    include 'include/navbar.php'; 
+    include 'db.php';
+    
     // Exemples de stats
     $total_pj = $pdo->query("SELECT COUNT(*) FROM personnage WHERE jouable='1'")->fetchColumn();
     $total_pnj = $pdo->query("SELECT COUNT(*) FROM personnage WHERE jouable='0'")->fetchColumn();
@@ -29,12 +30,12 @@
             </div>
             <div class="col-md-4">
                 <div class="stat-card bg-light">
-                    <strong>🎂 Moyenne d’âge :</strong><br>
+                    <strong>🎂 Moyenne d'âge :</strong><br>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="stat-card bg-light">
-                    <strong>🎭 Nombre d’ennemis vs alliés :</strong><br>
+                    <strong>🎭 Nombre d'ennemis vs alliés :</strong><br>
                 </div>
             </div>
             <div class="col-md-4">
@@ -54,13 +55,17 @@
             </div>
             <div class="col-md-4">
                 <div class="stat-card bg-light">
-                    <strong>🎒 Moyenne d’objets par personnage :</strong><br>
+                    <strong>🎒 Moyenne d'objets par personnage :</strong><br>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="stat-card bg-light">
                     <strong>🥇 le Nombre d'xp le plus élévé de la base de données:</strong><br>
-                    <?= htmlspecialchars($plus_xp['nom']) ?> (<?= $plus_xp['xp'] ?> XP)
+                    <?php if ($plus_xp): ?>
+                        <?= htmlspecialchars($plus_xp['nom']) ?> (<?= $plus_xp['xp'] ?> XP)
+                    <?php else: ?>
+                        Aucun personnage trouvé
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="col-md-12">
